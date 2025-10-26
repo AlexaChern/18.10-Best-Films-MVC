@@ -1,0 +1,16 @@
+﻿<div>
+	<h1 style="text-align:center">10 лучших фильмов</h1>
+	@foreach(Film film in ViewBag.Films)
+	{
+		<div class="film-card">
+			<img src=@film.PosterPath alt="Постер фильма" width="350px" height="500px"/>
+			<div>
+				<p>Название фильма: @film.Name</p>
+				<p>Режиссёр: @film.Director</p>
+				<p>Жанр: @film.Genre</p>
+				<p>Год выпуска: @film.ReleaseYear</p>
+				<p>Краткое описание: @film.Description</p>
+			</div>
+			</div>
+	}
+</div>
