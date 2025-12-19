@@ -1,16 +1,24 @@
-﻿<div>
-	<h1 style="text-align:center">10 лучших фильмов</h1>
+﻿@model IEnumerable<_18._10_Best_Films_MVC.Models.Film>
+@{
+	ViewData["Title"] = "Список фильмов";
+}
+
+<div>
+	<h1 style="text-align:center">Список фильмов</h1>
 	@foreach(Film film in ViewBag.Films)
 	{
 		<div class="film-card">
-			<img src=@film.PosterPath alt="Постер фильма" width="350px" height="500px"/>
-			<div>
-				<p>Название фильма: @film.Name</p>
-				<p>Режиссёр: @film.Director</p>
-				<p>Жанр: @film.Genre</p>
-				<p>Год выпуска: @film.ReleaseYear</p>
-				<p>Краткое описание: @film.Description</p>
+			<img src=@film.PosterPath alt="Постер фильма"/>
+			<div id="film-data">
+				<h3>@film.Name</h3>
+				<p>@film.Description</p>
+				<hr/>
+				<div id="data-work-buttons">
+					<a asp-action="Details" asp-route-id="@film.Id">Подробнее</a>
+					<a asp-action="Edit" asp-route-id="@film.Id">Редактировать</a>
+					<a asp-action="Delete" asp-route-id="@film.Id">Удалить</a>
+				</div>
 			</div>
-			</div>
+		</div>
 	}
 </div>

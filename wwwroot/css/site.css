@@ -1,5 +1,7 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -10,11 +12,6 @@ html {
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
 }
 
 body {
@@ -30,4 +27,44 @@ body {
     background-color: antiquewhite;
     border-radius: 15px;
     padding: 30px;
+}
+
+#film-data hr {
+    margin-top: 16em;
+}
+
+#data-work-buttons {
+    display: flex;
+    justify-self: end;
+    gap: 1em;
+}
+
+h3 {
+    margin-bottom: 2em;
+}
+
+.textarea {
+    border: 1px solid #ccc;
+}
+
+.form-group,
+.data-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.data-form .form-group {
+    margin-top: 1em;
+    width: 40em;
+}
+
+img {
+    width: 350px;
+    height: 500px;
 }

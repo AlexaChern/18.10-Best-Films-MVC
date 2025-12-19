@@ -1,0 +1,23 @@
+﻿@model _18._10_Best_Films_MVC.Models.Film
+
+@{
+	ViewData["Title"] = "Детали фильма";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Подробная информация о фильме</h1>
+
+<div class="film-card" style="background-color:lightyellow">
+	<img src=@Model?.PosterPath alt="Постер фильма" width="350px" height="500px" />
+	<div id="film-data">
+		<p>Название фильма: @Model?.Name</p>
+		<p>Режиссёр: @Model?.Director</p>
+		<p>Жанр: @Model?.Genre</p>
+		<p>Год выпуска: @Model?.ReleaseYear</p>
+		<p>Краткое описание: @Model?.Description</p>
+		<hr />
+		<div id="data-work-buttons">
+			<a asp-action="Edit" asp-route-id="@Model?.Id">Редактировать</a>
+			<a asp-action="FilmCard">Назад к списку</a>
+		</div>
+	</div>
+</div>

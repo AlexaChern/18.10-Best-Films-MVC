@@ -1,0 +1,79 @@
+﻿@model _18._10_Best_Films_MVC.Models.Film
+
+@{
+	ViewData["Tile"] = "Редактировать фильм";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Редактирование информации</h1>
+
+<h4>Фильм</h4>
+<hr />
+<div>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="film-card">
+            <div class="form-group">
+                <input type="file" name="newPoster" id="newPoster" accept="image/*" /><br>
+                <img src="@Url.Content(@Model.PosterPath)" id="previewImg" alt="Постер фильма"/>
+            </div>
+            <div class="data-form">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Director" class="control-label"></label>
+                    <input asp-for="Director" class="form-control" />
+                    <span asp-validation-for="Director" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Genre" class="control-label"></label>
+                    <input asp-for="Genre" class="form-control" />
+                    <span asp-validation-for="Genre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ReleaseYear" class="control-label"></label>
+                    <input asp-for="ReleaseYear" class="form-control" />
+                    <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description"
+                              class="form-control auto-expand"
+                              rows="5">@Model.Description</textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+				</div>
+			</div>
+		</div>
+        <div>
+            <a asp-action="FilmCard">Назад к списку</a>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    <script>
+        document.getElementById("newPoster").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("previewImg").src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
